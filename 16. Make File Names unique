@@ -1,4 +1,20 @@
 class Solution:
     def getFolderNames(self, names: List[str]) -> List[str]:
+
+        cache=dict()
+        output=[]
         
-......        
+        for name in names:
+            if name not in cache:
+                output.append(name)
+                cache[name]=1
+            else:
+                k=cache[name]
+                while name+f'({k})' in cache:
+                    k+=1
+                new_name=name+f'({k})'
+                output.append(new_name)
+                cache[name]+=1
+                cache[new_name]=1            
+        
+        return output
