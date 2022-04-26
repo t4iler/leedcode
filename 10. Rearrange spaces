@@ -1,10 +1,10 @@
 class Solution:
-    def slowestKey(self, releaseTimes: List[int], keysPressed: str) -> str:
-        ans = keysPressed[0]
-        mx = releaseTimes[0]
-        for i in range(1, len(keysPressed)):
-            d = releaseTimes[i] - releaseTimes[i - 1]
-            if d > mx or (d == mx and ord(keysPressed[i]) > ord(ans)):
-                mx = d
-                ans = keysPressed[i]
-        return ans
+    def reorderSpaces(self, text: str) -> str:
+        res = ""
+        arr = text.split()
+        n, m = len(arr) - 1, text.count(' ')
+        if n == 0:
+            res = arr[0] + ' '*m
+        else:
+            res = (' '*(m//n)).join(arr) + ' '*(m%n)
+        return res
